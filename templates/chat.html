@@ -5,8 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Чат</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        /* Добавляем стили для кнопки-двери */
+        .door-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            transition: transform 0.2s;
+        }
+
+        .door-button img {
+            width: 50px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .door-button:hover {
+            transform: scale(1.1);
+        }
+
+        .door-button:active {
+            transform: scale(0.95);
+        }
+    </style>
 </head>
 <body>
+    <!-- Кнопка-дверь для выхода -->
+    <a href="{{ url_for('auth') }}" class="door-button" title="Выход">
+        <img src="{{ url_for('static', filename='door.png') }}" alt="Выход">
+    </a>
+
     <div class="chat-container">
         <h2>Чат</h2>
         <div id="chatWindow" class="chat-window">
